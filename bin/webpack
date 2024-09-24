@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -it --rm -v "$(pwd)":/var/www -w /var/www node:20.13-alpine3.18 node_modules/.bin/webpack $@

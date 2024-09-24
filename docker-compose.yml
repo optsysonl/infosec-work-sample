@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  trg-server:
+    container_name: ws-server
+    image: infoseci/ws-php
+    depends_on: ["trg-db"]
+    command: ["/usr/local/bin/start_server.sh"]
+    ports:
+      - "8765:8765"
+      - "9000:9000"
+    working_dir: /app
+    volumes:
+      - .:/app
+  trg-db:
+    container_name: ws-db
+    image: infoseci/ws-mysql
+    restart: always
+    expose:
+      - 3306
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./db:/var/lib/mysql
+    external_links:
+      - trg-db

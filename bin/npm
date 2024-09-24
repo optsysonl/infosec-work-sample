@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -it --rm -v "$(pwd)":/var/www -w /var/www node:latest npm "$@"
