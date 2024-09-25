@@ -61,12 +61,15 @@ return function (RouteBuilder $builder): void {
         */
         $routes->connect('/', ['controller' => 'Home', 'action' => 'index', 'home']);
         $routes->registerMiddleware('bodyParser', new BodyParserMiddleware());
+
+        $routes->connect('/posts', ['controller' => 'Home', 'action' => 'index']);
+
         $routes->prefix('api', function (RouteBuilder $builder) {
             $builder->setExtensions(['json']);
             $builder->applyMiddleware('bodyParser');
-            $builder->connect('/posts', ['controller' => 'Posts', 'action' => 'add', '_method' => 'POST']);
+            $builder->connect('/posts/add', ['controller' => 'Posts', 'action' => 'add', '_method' => 'POST']);
             $builder->connect('/posts', ['controller' => 'Posts', 'action' => 'index', '_method' => 'GET']);
-            $builder->connect('/posts', ['controller' => 'Posts', 'action' => 'edit', '_method' => 'POST']);
+            //$builder->connect('/posts/edit', ['controller' => 'Posts', 'action' => 'edit', '_method' => 'POST']);
         });
         /*
         * ...and connect the rest of 'Pages' controller's URLs.

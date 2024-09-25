@@ -44,5 +44,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <footer>
     </footer>
     <?= $this->Html->script('dist/bundle') ?>
+    <?= $this->Html->scriptBlock(sprintf(
+    'var csrfToken = %s;',
+    json_encode($this->request->getAttribute('csrfToken'))
+)); ?>
 </body>
 </html>
