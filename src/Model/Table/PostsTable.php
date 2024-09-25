@@ -37,11 +37,11 @@ class PostsTable extends Table
     {
         parent::initialize($config);
 
-        $this->addBehavior('Timestamp');
-
         $this->setTable('posts');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
     }
 
     /**
